@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/gs.modules/volley/unspecified/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="0e670adab065294c2de8798e59e5789ac0679271">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-d6a6a53baae60be8ad08cf27e4124dd650b43835.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.1/support-annotations-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.1-65ad6a9f70dbd517c64025df816a48512a047f7f.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-1291197ea79f1d66d87e23c157389c6f7f49f720.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-9c81a2ac086a78e71a842a40a8fdeb1d832f9f1e.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/libs/internal_impl-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.1-2a459057c08fca3f5aaf3cde51369c6d7cbec070.jar" />
+    </item>
+
+</items>
