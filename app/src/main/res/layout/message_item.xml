@@ -19,4 +19,5 @@
         android:textAppearance="?android:textAppearanceLarge"
         tools:text="comment"
         android:id="@+id/text1"/>
+
 </LinearLayout>

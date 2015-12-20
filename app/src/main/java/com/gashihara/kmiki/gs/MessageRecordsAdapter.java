@@ -24,7 +24,7 @@ public class MessageRecordsAdapter extends ArrayAdapter<MessageRecord> {
         //キャッシュメモリを確保して画像を取得するクラスを作成。これを使って画像をダウンロードする。Volleyの機能
         mImageLoader = new ImageLoader(VolleyApplication.getInstance().getRequestQueue(), new BitmapLruCache());
     }
-    //表示するViewを返します。これがListVewの１つのセルとして表示されます。表示されるたびに実行されます。
+    //表示するViewを1行返します。これがListVewの１つのセルとして表示されます。表示されるたびに実行されます。
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         //convertViewをチェックし、Viewがないときは新しくViewを作成します。convertViewがセットされている時は未使用なのでそのまま再利用します。メモリーに優しい。
@@ -32,21 +32,21 @@ public class MessageRecordsAdapter extends ArrayAdapter<MessageRecord> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.message_item, parent, false);
         }
 
-        //レイアウトにある画像と文字のViewを所得します。
+        //レイアウトにある画像と文字のViewを所得します。()内はキャストといって代入するため左辺と右辺の型をあわせている
         NetworkImageView imageView = (NetworkImageView) convertView.findViewById(R.id.image1);
         TextView textView = (TextView) convertView.findViewById(R.id.text1);
 
-        //表示するセルの位置からデータをMessageRecordのデータを取得します。
+        //表示するセルの位置を使って配列からMessageRecordにデータを取得します。
         MessageRecord imageRecord = getItem(position);
 
-        //mImageLoaderを使って画像をダウンロードし、Viewにセットします。
+        //mImageLoaderを使って画像をダウンロードし、Viewにセットします。mImageLoaderがキャッシュからデータを探してくれる
         imageView.setImageUrl(imageRecord.getImageUrl(), mImageLoader);
         //Viewに文字をセットします。
         textView.setText(imageRecord.getComment());
         //1つのセルのViewを返します。
         return convertView;
     }
-    //データをセットしなおす関数
+    //データをセットしなおす関数。List形式のMessageRecordをわたす
     public void setMessageRecords(List<MessageRecord> objects) {
         //ArrayAdapterを空にする。
         clear();
@@ -54,7 +54,7 @@ public class MessageRecordsAdapter extends ArrayAdapter<MessageRecord> {
         for(MessageRecord object : objects) {
             add(object);
         }
-        //データの変更を通知します。
+        //データの変更を通知します。UIの更新のために必要
         notifyDataSetChanged();
     }
 }

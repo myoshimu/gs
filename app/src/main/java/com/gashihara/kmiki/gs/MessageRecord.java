@@ -7,6 +7,7 @@ public class MessageRecord {
     private String comment;
 
     //データを１つ作成する関数です。項目が増えたら増やしましょう。
+    //MessageRecord=クラスメイト同じ名前の関数=newしたときに動くConstructor
     public MessageRecord(String imageUrl, String comment) {
         this.imageUrl = imageUrl;
         this.comment = comment;

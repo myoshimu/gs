@@ -25,7 +25,9 @@ public class VolleyApplication extends Application {
         //superは親クラスです。ですのでApplicationです。このonCreate()関数を実行しています。overrideしていますが、親のonCreate()も実行しているわけです。
         //クラス内の関数（メソッド）はクラス名.関数名()というかんじに記載します。
         super.onCreate();
-        //Volleyの通信用のクラスです。これを使って通信を行います。
+        //お約束的な書き方。親のonCreateを実行している（全部Overrideしちゃうと何かあったときこわいので）
+
+        //Volleyの通信用のクラスを初期化してキューを準備。Volleyは初期化されたとき作られるオブジェクト
         mRequestQueue = Volley.newRequestQueue(this);
         //自分自身のインスタンス（newなどでクラスを実体化したもの）を代入しています。
         sInstance = this;
