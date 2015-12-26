@@ -35,6 +35,7 @@ public class MessageRecordsAdapter extends ArrayAdapter<MessageRecord> {
         //レイアウトにある画像と文字のViewを所得します。()内はキャストといって代入するため左辺と右辺の型をあわせている
         NetworkImageView imageView = (NetworkImageView) convertView.findViewById(R.id.image1);
         TextView textView = (TextView) convertView.findViewById(R.id.text1);
+        TextView textView2 = (TextView) convertView.findViewById(R.id.text2);
 
         //表示するセルの位置を使って配列からMessageRecordにデータを取得します。
         MessageRecord imageRecord = getItem(position);
@@ -43,6 +44,7 @@ public class MessageRecordsAdapter extends ArrayAdapter<MessageRecord> {
         imageView.setImageUrl(imageRecord.getImageUrl(), mImageLoader);
         //Viewに文字をセットします。
         textView.setText(imageRecord.getComment());
+        textView2.setText(imageRecord.getPdate());
         //1つのセルのViewを返します。
         return convertView;
     }

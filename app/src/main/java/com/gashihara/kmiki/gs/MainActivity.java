@@ -93,8 +93,9 @@ public class MainActivity extends ActionBarActivity {
             //jsonの値を取得します。
             String title = jsonMessage.getString("comment");
             String url = jsonMessage.getString("imageUrl");
+            String pdate = jsonMessage.getString("pdate");
             //jsonMessageを新しく作ります。
-            MessageRecord record = new MessageRecord(url, title);
+            MessageRecord record = new MessageRecord(url, title, pdate);
             //MessageRecordの配列に追加します。
             records.add(record);
         }
