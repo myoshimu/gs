@@ -2,7 +2,12 @@
 package com.gashihara.kmiki.gs;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.Spannable;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -24,7 +29,7 @@ public class MessageRecordsAdapter extends ArrayAdapter<MessageRecord> {
         //キャッシュメモリを確保して画像を取得するクラスを作成。これを使って画像をダウンロードする。Volleyの機能
         mImageLoader = new ImageLoader(VolleyApplication.getInstance().getRequestQueue(), new BitmapLruCache());
     }
-    //表示するViewを1行返します。これがListVewの１つのセルとして表示されます。表示されるたびに実行されます。
+    //表示するViewを返します。これがListVewの１つのセルとして表示されます。表示されるたびに実行されます。
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         //convertViewをチェックし、Viewがないときは新しくViewを作成します。convertViewがセットされている時は未使用なのでそのまま再利用します。メモリーに優しい。
@@ -32,23 +37,63 @@ public class MessageRecordsAdapter extends ArrayAdapter<MessageRecord> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.message_item, parent, false);
         }
 
-        //レイアウトにある画像と文字のViewを所得します。()内はキャストといって代入するため左辺と右辺の型をあわせている
+        //レイアウトにある画像と文字のViewを所得します。
         NetworkImageView imageView = (NetworkImageView) convertView.findViewById(R.id.image1);
         TextView textView = (TextView) convertView.findViewById(R.id.text1);
-        TextView textView2 = (TextView) convertView.findViewById(R.id.text2);
 
-        //表示するセルの位置を使って配列からMessageRecordにデータを取得します。
+        //webリンクを制御するプログラムはここから
+        // TextView に LinkMovementMethod を登録します
+        //TextViewをタップした時のイベントリスナー（タップの状況を監視するクラス）を登録します。onTouchにタップした時の処理を記述します。buttonやほかのViewも同じように記述できます。
+        textView.setOnTouchListener(new ViewGroup.OnTouchListener() {
+            //タップした時の処理
+            @Override
+            public boolean onTouch(final View view, MotionEvent event) {
+                //タップしたのはTextViewなのでキャスト（型の変換）する
+                TextView textView = (TextView) view;
+                //リンクをタップした時に処理するクラスを作成。AndroidSDKにあるLinkMovementMethodを拡張しています。
+               MutableLinkMovementMethod m = new MutableLinkMovementMethod();
+                //MutableLinkMovementMethodのイベントリスナーをさらにセットしています。
+                m.setOnUrlClickListener(new MutableLinkMovementMethod.OnUrlClickListener() {
+                    //リンクをクリックした時の処理
+                    public void onUrlClick(TextView v,Uri uri) {
+                        Log.d("myurl",uri.toString());//デバッグログを出力します。
+                        // Intent のインスタンスを取得する。view.getContext()でViewの自分のアクティビティーのコンテキストを取得。遷移先のアクティビティーを.classで指定
+                        Intent intent = new Intent(view.getContext(), WebActivity.class);
+
+                        // 渡したいデータとキーを指定する。urlという名前でリンクの文字列を渡しています。
+                        intent.putExtra("url", uri.toString());
+
+                        // 遷移先の画面を呼び出す
+                        view.getContext().startActivity(intent);
+
+                    }
+                });
+                //ここからはMutableLinkMovementMethodを使うための処理なので毎回同じ感じ。
+                //リンクのチェックを行うため一時的にsetする
+                textView.setMovementMethod(m);
+                //URLがタッチされたらtrueがかえる、それ以外はfalse
+                boolean mt = m.onTouchEvent(textView, (Spannable) textView.getText(), event);
+                //チェックが終わったので解除する しないと親view(listview)に行けない
+                textView.setMovementMethod(null);
+                //setMovementMethodを呼ぶとフォーカスがtrueになるのでfalseにする
+                textView.setFocusable(false);
+                //戻り値がtrueの場合は今のviewで処理、falseの場合は親view(ListView)で処理
+                return mt;
+            }
+        });
+        //webリンクを制御するプログラムはここまで
+
+        //表示するセルの位置からデータをMessageRecordのデータを取得します。
         MessageRecord imageRecord = getItem(position);
 
-        //mImageLoaderを使って画像をダウンロードし、Viewにセットします。mImageLoaderがキャッシュからデータを探してくれる
+        //mImageLoaderを使って画像をダウンロードし、Viewにセットします。
         imageView.setImageUrl(imageRecord.getImageUrl(), mImageLoader);
         //Viewに文字をセットします。
         textView.setText(imageRecord.getComment());
-        textView2.setText(imageRecord.getPdate());
         //1つのセルのViewを返します。
         return convertView;
     }
-    //データをセットしなおす関数。List形式のMessageRecordをわたす
+    //データをセットしなおす関数
     public void setMessageRecords(List<MessageRecord> objects) {
         //ArrayAdapterを空にする。
         clear();
@@ -56,7 +101,7 @@ public class MessageRecordsAdapter extends ArrayAdapter<MessageRecord> {
         for(MessageRecord object : objects) {
             add(object);
         }
-        //データの変更を通知します。UIの更新のために必要
+        //データの変更を通知します。
         notifyDataSetChanged();
     }
 }

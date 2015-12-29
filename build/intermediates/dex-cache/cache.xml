@@ -2,11 +2,11 @@
 <items version="2" >
 
     <item
-        jar="/Users/kmiki/AndroidStudioProjects/gs2/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/libs/internal_impl-23.1.1.jar"
+        jar="/Users/kmiki/AndroidStudioProjects/gs2/app/build/intermediates/exploded-aar/gs2.modules/volley/unspecified/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
-        <dex dex="/Users/kmiki/AndroidStudioProjects/gs2/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.1-6426fb3cb18aa9214ae9312565d851a759fcb2be.jar" />
+        sha1="8d9c4e70f4d94932a0a04c09e7dd6df8dd5d9807">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs2/app/build/intermediates/pre-dexed/debug/classes-2ea9d01bb04fa331243f82dbd61abc039403b245.jar" />
     </item>
     <item
         jar="/Users/kmiki/AndroidStudioProjects/gs2/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/classes.jar"
@@ -16,18 +16,11 @@
         <dex dex="/Users/kmiki/AndroidStudioProjects/gs2/app/build/intermediates/pre-dexed/debug/classes-bde5dfee77bb6e6fe7ff235c38f8f41d3d039e63.jar" />
     </item>
     <item
-        jar="/Users/kmiki/AndroidStudioProjects/gs2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/jars/classes.jar"
+        jar="/Users/kmiki/AndroidStudioProjects/gs2/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/libs/internal_impl-23.1.1.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
-        <dex dex="/Users/kmiki/AndroidStudioProjects/gs2/app/build/intermediates/pre-dexed/debug/classes-2de52878e5cc0a563de6dd6eb489930d62686400.jar" />
-    </item>
-    <item
-        jar="/Users/kmiki/AndroidStudioProjects/gs2/app/build/intermediates/exploded-aar/gs2.modules/volley/unspecified/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="8d9c4e70f4d94932a0a04c09e7dd6df8dd5d9807">
-        <dex dex="/Users/kmiki/AndroidStudioProjects/gs2/app/build/intermediates/pre-dexed/debug/classes-2ea9d01bb04fa331243f82dbd61abc039403b245.jar" />
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs2/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.1-6426fb3cb18aa9214ae9312565d851a759fcb2be.jar" />
     </item>
     <item
         jar="/Users/kmiki/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.1/support-annotations-23.1.1.jar"
@@ -35,6 +28,41 @@
         revision="23.0.2"
         sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
         <dex dex="/Users/kmiki/AndroidStudioProjects/gs2/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.1-65ad6a9f70dbd517c64025df816a48512a047f7f.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/AndroidStudioProjects/gs3/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs3/app/build/intermediates/pre-dexed/debug/classes-4112f51994db3420af5e25d3c3feb8a21c6491a3.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/AndroidStudioProjects/gs3/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/libs/internal_impl-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs3/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.1-d1c519426288c56153f49faf1fa0fe2381809561.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/AndroidStudioProjects/gs2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs2/app/build/intermediates/pre-dexed/debug/classes-2de52878e5cc0a563de6dd6eb489930d62686400.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/AndroidStudioProjects/gs3/app/build/intermediates/exploded-aar/gs3.modules/volley/unspecified/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="d14b6a52ec4709fe266b58876c00abbb3caa35a0">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs3/app/build/intermediates/pre-dexed/debug/classes-8a1fb846899b552d0498302ba42b3b85b8a693d8.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/AndroidStudioProjects/gs3/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs3/app/build/intermediates/pre-dexed/debug/classes-bbe844c73e6b1bdf61df8ce440f7967d99efbd99.jar" />
     </item>
 
 </items>

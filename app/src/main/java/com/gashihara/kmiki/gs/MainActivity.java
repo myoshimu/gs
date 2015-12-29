@@ -29,7 +29,7 @@ public class MainActivity extends ActionBarActivity {
     //起動時にOSから実行される関数です。
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState); //親クラスのonCreateをついでに実行
         //メイン画面のレイアウトをセットしています。ListView
         setContentView(R.layout.activity_main);
 
