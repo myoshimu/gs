@@ -4,7 +4,10 @@ package com.gashihara.kmiki.gs;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -16,7 +19,10 @@ import android.widget.TextView;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 
+import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 //<MessageRecord>はデータクラスMessageRecordのArrayAdapterであることを示している。このアダプターで管理したいデータクラスを記述されば良い。
 public class MessageRecordsAdapter extends ArrayAdapter<MessageRecord> {
@@ -40,45 +46,31 @@ public class MessageRecordsAdapter extends ArrayAdapter<MessageRecord> {
         //レイアウトにある画像と文字のViewを所得します。
         NetworkImageView imageView = (NetworkImageView) convertView.findViewById(R.id.image1);
         TextView textView = (TextView) convertView.findViewById(R.id.text1);
+        TextView textView2 = (TextView) convertView.findViewById(R.id.text2);
 
         //webリンクを制御するプログラムはここから
-        // TextView に LinkMovementMethod を登録します
-        //TextViewをタップした時のイベントリスナー（タップの状況を監視するクラス）を登録します。onTouchにタップした時の処理を記述します。buttonやほかのViewも同じように記述できます。
+
         textView.setOnTouchListener(new ViewGroup.OnTouchListener() {
-            //タップした時の処理
             @Override
-            public boolean onTouch(final View view, MotionEvent event) {
+            public boolean onTouch(View v, MotionEvent event) {
                 //タップしたのはTextViewなのでキャスト（型の変換）する
-                TextView textView = (TextView) view;
-                //リンクをタップした時に処理するクラスを作成。AndroidSDKにあるLinkMovementMethodを拡張しています。
-               MutableLinkMovementMethod m = new MutableLinkMovementMethod();
-                //MutableLinkMovementMethodのイベントリスナーをさらにセットしています。
-                m.setOnUrlClickListener(new MutableLinkMovementMethod.OnUrlClickListener() {
-                    //リンクをクリックした時の処理
-                    public void onUrlClick(TextView v,Uri uri) {
-                        Log.d("myurl",uri.toString());//デバッグログを出力します。
-                        // Intent のインスタンスを取得する。view.getContext()でViewの自分のアクティビティーのコンテキストを取得。遷移先のアクティビティーを.classで指定
-                        Intent intent = new Intent(view.getContext(), WebActivity.class);
+                TextView textView = (TextView) v;
 
-                        // 渡したいデータとキーを指定する。urlという名前でリンクの文字列を渡しています。
-                        intent.putExtra("url", uri.toString());
+                // TextView に LinkMovementMethod を登録します
+                textView.setMovementMethod(LinkMovementMethod.getInstance());
 
-                        // 遷移先の画面を呼び出す
-                        view.getContext().startActivity(intent);
+                //リンクをタップした時に処理するクラスを作成。SpannableStringを使う。
+                String message = textView.getText().toString();
 
-                    }
-                });
-                //ここからはMutableLinkMovementMethodを使うための処理なので毎回同じ感じ。
-                //リンクのチェックを行うため一時的にsetする
-                textView.setMovementMethod(m);
-                //URLがタッチされたらtrueがかえる、それ以外はfalse
-                boolean mt = m.onTouchEvent(textView, (Spannable) textView.getText(), event);
-                //チェックが終わったので解除する しないと親view(listview)に行けない
-                textView.setMovementMethod(null);
-                //setMovementMethodを呼ぶとフォーカスがtrueになるのでfalseにする
-                textView.setFocusable(false);
-                //戻り値がtrueの場合は今のviewで処理、falseの場合は親view(ListView)で処理
-                return mt;
+                LinkedList<String> ulist = new LinkedList<String>();
+                ulist.add("http://google.co.jp");
+                ulist.add("http://yahoo.co.jp");
+
+                // SpannableString の取得
+                SpannableString ss = createSpannableString(message, ulist);
+                // SpannableString をセットし、リンクを有効化する
+                textView.setText(ss);
+                return false;
             }
         });
         //webリンクを制御するプログラムはここまで
@@ -90,9 +82,50 @@ public class MessageRecordsAdapter extends ArrayAdapter<MessageRecord> {
         imageView.setImageUrl(imageRecord.getImageUrl(), mImageLoader);
         //Viewに文字をセットします。
         textView.setText(imageRecord.getComment());
+        textView2.setText(imageRecord.getPdate());
         //1つのセルのViewを返します。
         return convertView;
     }
+
+
+    private SpannableString createSpannableString(String message, final LinkedList<String> ulist) {
+
+        SpannableString ss = new SpannableString(message);
+
+        for (int i = 0; i < ulist.size(); i++) {
+            int start = 0;
+            int end = 0;
+
+            // リンク化対象の文字列の start, end を算出する
+            Pattern pattern = Pattern.compile(ulist.get(i));
+            Matcher matcher = pattern.matcher(message);
+            while (matcher.find()) {
+                start = matcher.start();
+                end = matcher.end();
+                break;
+            }
+
+            // SpannableString にクリックイベント、パラメータをセットする
+            final int finalI = i;
+            ss.setSpan(new ClickableSpan() {
+                @Override
+                public void onClick(View textView) {
+                    String url = ulist.get(finalI);
+                    Uri uri = Uri.parse(url);
+                    Log.d("myurl2", uri.toString());//デバッグログを出力します。
+
+                    Intent intent = new Intent(textView.getContext(), WebActivity.class);
+                    intent.putExtra("url",uri.toString());
+                    textView.getContext().startActivity(intent);
+                }
+            }, start, end, Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+        }
+
+        return ss;
+    }
+
+
+
     //データをセットしなおす関数
     public void setMessageRecords(List<MessageRecord> objects) {
         //ArrayAdapterを空にする。
