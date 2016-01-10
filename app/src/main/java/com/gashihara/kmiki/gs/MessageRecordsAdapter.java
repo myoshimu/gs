@@ -49,7 +49,6 @@ public class MessageRecordsAdapter extends ArrayAdapter<MessageRecord> {
         TextView textView2 = (TextView) convertView.findViewById(R.id.text2);
 
         //webリンクを制御するプログラムはここから
-
         textView.setOnTouchListener(new ViewGroup.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {

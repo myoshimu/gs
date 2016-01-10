@@ -2,6 +2,9 @@
 //どのアクティビティーが起動時に実行されるのかはAndroidManifestに記述されています。
 package com.gashihara.kmiki.gs;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -12,6 +15,7 @@ import android.widget.Toast;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.kii.cloud.storage.KiiUser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,8 +32,26 @@ public class MainActivity extends ActionBarActivity {
 
     //起動時にOSから実行される関数です。
     @Override
+    //savedInstanceStateはアプリを終了した時にプロセスを残すためのもの？
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState); //親クラスのonCreateをついでに実行
+        //Userで追加ここから
+        //KiiCloudでのログイン状態を取得します。nullの時はログインしていない。
+        KiiUser user = KiiUser.getCurrentUser();
+        //自動ログインのため保存されているaccess tokenを読み出す。tokenがあればログインできる
+        SharedPreferences pref = getSharedPreferences(getString(R.string.save_data_name), Context.MODE_PRIVATE);
+        String token = pref.getString(getString(R.string.save_token), "");//保存されていない時は""
+        //ログインしていない時はログインのactivityに遷移.SharedPreferencesが空の時もチェックしないとLogOutできない。
+        if(user == null || token == "") {
+            // Intent のインスタンスを取得する。getApplicationContext()でViewの自分のアクティビティーのコンテキストを取得。遷移先のアクティビティーを.classで指定
+            Intent intent = new Intent(getApplicationContext(), UserActivity.class);
+            // 遷移先の画面を呼び出す
+            startActivity(intent);
+            //戻れないようにActivityを終了します。
+            finish();
+        }
+        //Userで追加ここまで
+
         //メイン画面のレイアウトをセットしています。ListView
         setContentView(R.layout.activity_main);
 
@@ -122,6 +144,22 @@ public class MainActivity extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+        //Userで追加ここから。メニューの処理
+        //ログアウト処理.KiiCloudにはログアウト機能はないのでAccesTokenを削除して対応。
+        if (id == R.id.log_out) {
+            //自動ログインのため保存されているaccess tokenを消す。
+            SharedPreferences pref = getSharedPreferences(getString(R.string.save_data_name), Context.MODE_PRIVATE);
+            pref.edit().clear().apply();
+            //ログイン画面に遷移
+            // Intent のインスタンスを取得する。getApplicationContext()でViewの自分のアクティビティーのコンテキストを取得。遷移先のアクティビティーを.classで指定
+            Intent intent = new Intent(getApplicationContext(), UserActivity.class);
+            // 遷移先の画面を呼び出す
+            startActivity(intent);
+            //戻れないようにActivityを終了します。
+            finish();
+            return true;
+        }
+        //Userで追加ここまで
 
         return super.onOptionsItemSelected(item);
     }

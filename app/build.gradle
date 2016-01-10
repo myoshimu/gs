@@ -19,9 +19,18 @@ android {
     }
 }
 
+repositories{
+        flatDir {
+        dirs 'libs'
+    }
+}
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile project(':modules:volley')
+    compile 'com.example.library:android-cloud-sdk-v2.4.2@aar'
+    compile 'com.squareup.okhttp:okhttp:2.3.0'
+    compile 'com.squareup.okhttp:okhttp-apache:2.3.0'
 }
