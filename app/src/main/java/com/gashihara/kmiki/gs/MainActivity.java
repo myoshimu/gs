@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.facebook.Session;
 import com.kii.cloud.storage.KiiUser;
 
 import org.json.JSONArray;
@@ -150,6 +151,12 @@ public class MainActivity extends ActionBarActivity {
             //自動ログインのため保存されているaccess tokenを消す。
             SharedPreferences pref = getSharedPreferences(getString(R.string.save_data_name), Context.MODE_PRIVATE);
             pref.edit().clear().apply();
+
+            //facebook処理
+            Session s = Session.getActiveSession();
+            s.closeAndClearTokenInformation();
+            //KiiUser.logOut();
+
             //ログイン画面に遷移
             // Intent のインスタンスを取得する。getApplicationContext()でViewの自分のアクティビティーのコンテキストを取得。遷移先のアクティビティーを.classで指定
             Intent intent = new Intent(getApplicationContext(), UserActivity.class);
@@ -160,6 +167,17 @@ public class MainActivity extends ActionBarActivity {
             return true;
         }
         //Userで追加ここまで
+        //Postで追加ここから
+        //投稿処理
+        if (id == R.id.post) {
+            //投稿画面に遷移
+            // Intent のインスタンスを取得する。getApplicationContext()でViewの自分のアクティビティーのコンテキストを取得。遷移先のアクティビティーを.classで指定
+            Intent intent = new Intent(getApplicationContext(), com.gashihara.kmiki.gs.PostActivity.class);
+            // 遷移先の画面を呼び出す
+            startActivity(intent);
+            return true;
+        }
+        //Postで追加ここまで
 
         return super.onOptionsItemSelected(item);
     }

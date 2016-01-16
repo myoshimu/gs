@@ -153,21 +153,11 @@ public class UserActivity extends ActionBarActivity implements Session.StatusCal
                         pref.edit().putString(getString(R.string.save_token), user.getAccessToken()).apply();
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
+                        finish();
                     }
                 }
             });
 
-            button.setText("LOGOUT");
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Session s = Session.getActiveSession();
-                    if (!session.isClosed()) {
-                        session.closeAndClearTokenInformation();
-                    }
-                    KiiUser.logOut();
-                }
-            });
         } else {
             textView.setText("Login to FB");
             button.setText("LOGIN WITH FACEBOOK");
