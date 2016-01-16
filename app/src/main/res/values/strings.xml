@@ -11,4 +11,6 @@
     <string name="save_token">save_token</string>
     <!-- Userで追加ここまで-->
 
+    <string name="facebook_app_id">1544544715863992</string>
+
 </resources>

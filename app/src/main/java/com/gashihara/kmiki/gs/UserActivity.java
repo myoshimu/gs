@@ -16,21 +16,36 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
+import com.facebook.LoggingBehavior;
+import com.facebook.Session;
+import com.facebook.SessionState;
+import com.facebook.Settings;
+import com.kii.cloud.storage.Kii;
 import com.kii.cloud.storage.KiiUser;
+import com.kii.cloud.storage.callback.KiiSocialCallBack;
 import com.kii.cloud.storage.callback.KiiUserCallBack;
 import com.kii.cloud.storage.exception.CloudExecutionException;
+import com.kii.cloud.storage.social.KiiSocialConnect;
+import com.kii.cloud.storage.social.connector.KiiSocialNetworkConnector;
 
 
-public class UserActivity extends ActionBarActivity {
-    //入力するビューです。クラス内の複数Functionで使い回す変数をここに定義。
-    //関数内に書いてしまうといちいちその関数でfindViewbyIdしないといけないので面倒
+public class UserActivity extends ActionBarActivity implements Session.StatusCallback {
     private EditText mUsernameField;
     private EditText mPasswordField;
+    private Button button;
+    private TextView textView;
+    Session session = Session.getActiveSession();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //ここからFB用準備処理
+        Kii.initialize("6db58565", "10c367440de47095cf56a4ef3c7ac48b", Kii.Site.JP);
+        Settings.addLoggingBehavior(LoggingBehavior.INCLUDE_ACCESS_TOKENS);
+        //FBセッション取得
 
         //自動ログインのため保存されているaccess tokenを読み出す。tokenがあればログインできる
         SharedPreferences pref = getSharedPreferences(getString(R.string.save_data_name), Context.MODE_PRIVATE);
@@ -53,21 +68,44 @@ public class UserActivity extends ActionBarActivity {
             }
         }
 
+        //もしFBセッションがないなら
+        if (session == null) {
+            //savedInstanceStateが残ってそうならセッション回復
+
+            if (savedInstanceState != null) {
+                session = Session.restoreSession(this, null, this, savedInstanceState);
+            }//そうでないならセッション初期化
+            else  {
+                session = new Session(this);
+                Session.setActiveSession(session);
+            } //Session.setActiveSession(session);
+            if (session.getState().equals(SessionState.CREATED_TOKEN_LOADED)) {
+                session.openForRead(new Session.OpenRequest(this).setCallback(this));
+            }
+        }
+
+        updateView(session);
+
     }
+
+
+
+
     //ログイン用画面を作る。いつもonCreateでやっていること
     protected void CreateMyView(Bundle savedInstanceState) {
         setContentView(R.layout.activity_user);
-        //EditTextのビューを探します
         mUsernameField = (EditText) findViewById(R.id.username_field);
         mPasswordField = (EditText) findViewById(R.id.password_field);
         //パスワードを隠す設定
         mPasswordField.setTransformationMethod(new PasswordTransformationMethod());
         //パスワードの入力文字を制限する。参考：http://techbooster.jpn.org/andriod/ui/3857/
         mPasswordField.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-        //登録ボタン
+
         Button signupBtn = (Button) findViewById(R.id.signup_button);
-        //ログインボタン
         Button loginBtn = (Button) findViewById(R.id.login_button);
+        button = (Button) findViewById(R.id.button);
+        textView = (TextView) findViewById(R.id.fb_text);
+
         //ログインボタンをクリックした時の処理を設定
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,7 +122,75 @@ public class UserActivity extends ActionBarActivity {
                 onSignupButtonClicked(v);
             }
         });
+
+
     }
+
+
+
+
+
+
+    //FaceBookログイン
+    private void updateView(final Session session) {
+        if (session.isOpened()) {
+
+            // FB login succeeded. Login to Kii with obtained access token.
+            Bundle options = new Bundle();
+            String accessToken = session.getAccessToken();
+            options.putString("accessToken", accessToken);
+            options.putParcelable("provider", KiiSocialNetworkConnector.Provider.FACEBOOK);
+            KiiSocialNetworkConnector conn = (KiiSocialNetworkConnector) Kii.socialConnect(KiiSocialConnect.SocialNetwork.SOCIALNETWORK_CONNECTOR);
+            conn.logIn(this, options, new KiiSocialCallBack() {
+                @Override
+                public void onLoginCompleted(KiiSocialConnect.SocialNetwork network, KiiUser user, Exception exception) {
+                    if (exception != null) {
+                        textView.setText("Failed to Login to Kii! " + exception
+                                .getMessage());
+                        //return;
+                    } else {
+                        SharedPreferences pref = getSharedPreferences(getString(R.string.save_data_name), Context.MODE_PRIVATE);
+                        pref.edit().putString(getString(R.string.save_token), user.getAccessToken()).apply();
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(intent);
+                    }
+                }
+            });
+
+            button.setText("LOGOUT");
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Session s = Session.getActiveSession();
+                    if (!session.isClosed()) {
+                        session.closeAndClearTokenInformation();
+                    }
+                    KiiUser.logOut();
+                }
+            });
+        } else {
+            textView.setText("Login to FB");
+            button.setText("LOGIN WITH FACEBOOK");
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Session session = Session.getActiveSession();
+                    if (!session.isOpened() && !session.isClosed()) {
+                        session.openForRead(new Session.OpenRequest(UserActivity.this)
+                                .setCallback(UserActivity.this));
+                    } else {
+                        Session.openActiveSession(UserActivity.this, true, UserActivity.this);
+                    }
+                }
+            });
+        }
+    }
+
+
+
+
+
+
     //ログイン処理：参考　http://documentation.kii.com/ja/guides/android/managing-users/sign-in/
     public void onLoginButtonClicked(View v) {
         //IMEを閉じる
@@ -101,6 +207,8 @@ public class UserActivity extends ActionBarActivity {
             showAlert(R.string.operation_failed, e.getLocalizedMessage(), null);
         }
     }
+
+
     //ログインに失敗した時のダイアログ表示
     void showAlert(int titleId, String message, com.gashihara.kmiki.gs.AlertDialogFragment.AlertDialogListener listener ) {
         DialogFragment newFragment = com.gashihara.kmiki.gs.AlertDialogFragment.newInstance(titleId, message, listener);
@@ -123,6 +231,10 @@ public class UserActivity extends ActionBarActivity {
             showAlert(R.string.operation_failed, e.getLocalizedMessage(), null);
         }
     }
+
+
+
+
     //新規登録、ログインの時に呼び出されるコールバッククラス
     KiiUserCallBack callback = new KiiUserCallBack() {
         //ログインが完了した時に自動的に呼び出される。自動ログインの時も呼び出される
@@ -153,6 +265,7 @@ public class UserActivity extends ActionBarActivity {
                     showAlert(R.string.operation_failed, e.getLocalizedMessage(), null);
             }
         }
+
         //新規登録の時に自動的に呼び出される
         @Override
         public void onRegisterCompleted(int token, KiiUser user, Exception e) {
@@ -178,6 +291,32 @@ public class UserActivity extends ActionBarActivity {
             }
         }
     };
+
+
+
+
+
+
+
+
+    //Facebook 認証を完了するためのメソッドを onActivityResult に追加。お決まりの処理
+    @Override
+    public void call(Session session, SessionState sessionState, Exception e) {
+        updateView(session);
+
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Session.getActiveSession().onActivityResult(this, requestCode, resultCode, data);
+        if (requestCode == KiiSocialNetworkConnector.REQUEST_CODE) {
+            Kii.socialConnect(KiiSocialConnect.SocialNetwork.SOCIALNETWORK_CONNECTOR)
+                    .respondAuthOnActivityResult(requestCode, resultCode, data);
+        }
+    }
+
+//FB用処理
+
 
     //メニュー関係：未使用
     @Override

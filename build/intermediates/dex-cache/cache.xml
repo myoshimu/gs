@@ -2,32 +2,11 @@
 <items version="2" >
 
     <item
-        jar="/Users/kmiki/AndroidStudioProjects/gs3_sf/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/jars/classes.jar"
+        jar="/Users/kmiki/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.1/support-annotations-23.1.1.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
-        <dex dex="/Users/kmiki/AndroidStudioProjects/gs3_sf/app/build/intermediates/pre-dexed/debug/classes-8e79099842d4c2c238615d4d45bca2c1706e0a41.jar" />
-    </item>
-    <item
-        jar="/Users/kmiki/AndroidStudioProjects/gs3_sf/app/build/intermediates/exploded-aar/com.example.library/android-cloud-sdk-v2.4.2/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="ec79986e7c3a43c498ceada61d49cccc14f5dec3">
-        <dex dex="/Users/kmiki/AndroidStudioProjects/gs3_sf/app/build/intermediates/pre-dexed/debug/classes-bc4ef90ba591e9b5eee7c8eb5dc097f43be120f4.jar" />
-    </item>
-    <item
-        jar="/Users/kmiki/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp/2.3.0/2e7bc7033dc2c8423e661224171b3133fb155b28/okhttp-2.3.0.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="2e7bc7033dc2c8423e661224171b3133fb155b28">
-        <dex dex="/Users/kmiki/AndroidStudioProjects/gs3_sf/app/build/intermediates/pre-dexed/debug/okhttp-2.3.0-170b1c94db380e0085abbb0d6fe6b366f0978bd3.jar" />
-    </item>
-    <item
-        jar="/Users/kmiki/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.3.0/1b355f73402020c5a0dcca58affc3ec3dfeabac1/okio-1.3.0.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="1b355f73402020c5a0dcca58affc3ec3dfeabac1">
-        <dex dex="/Users/kmiki/AndroidStudioProjects/gs3_sf/app/build/intermediates/pre-dexed/debug/okio-1.3.0-76e80f3e3ecd8d9085a0c34501d276589f35002a.jar" />
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs3_sf/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.1-65ad6a9f70dbd517c64025df816a48512a047f7f.jar" />
     </item>
     <item
         jar="/Users/kmiki/AndroidStudioProjects/gs3_sf/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/libs/internal_impl-23.1.1.jar"
@@ -44,6 +23,41 @@
         <dex dex="/Users/kmiki/AndroidStudioProjects/gs3_sf/app/build/intermediates/pre-dexed/debug/okhttp-apache-2.3.0-a121ddd5ce941776028f85c3c8e286ae3b83e7a0.jar" />
     </item>
     <item
+        jar="/Users/kmiki/AndroidStudioProjects/gs3_sf/app/build/intermediates/exploded-aar/gs3_sf.modules/volley/unspecified/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="bf4cfacac6b9c3761b95c7bea91df26c316f9c79">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs3_sf/app/build/intermediates/pre-dexed/debug/classes-09e2a02d4ed569a142da68c45ee4994f2b0f6101.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.3.0/1b355f73402020c5a0dcca58affc3ec3dfeabac1/okio-1.3.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="1b355f73402020c5a0dcca58affc3ec3dfeabac1">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs3_sf/app/build/intermediates/pre-dexed/debug/okio-1.3.0-76e80f3e3ecd8d9085a0c34501d276589f35002a.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/AndroidStudioProjects/gs3_sf/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.20.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="66236ebe4d86dafbfc30b4fd7e5917ba2a645b35">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs3_sf/app/build/intermediates/pre-dexed/debug/classes-c8cb4973fec6738347a49af07f15e2ec8a7533a8.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.1.2/91c20388c9a45f62b5ed8fe0502bb76ff6251fc7/bolts-android-1.1.2.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="91c20388c9a45f62b5ed8fe0502bb76ff6251fc7">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs3_sf/app/build/intermediates/pre-dexed/debug/bolts-android-1.1.2-089a91239818575e7bef89b246a2fb60240aca78.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/AndroidStudioProjects/gs3_sf/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs3_sf/app/build/intermediates/pre-dexed/debug/classes-8e79099842d4c2c238615d4d45bca2c1706e0a41.jar" />
+    </item>
+    <item
         jar="/Users/kmiki/AndroidStudioProjects/gs3_sf/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
@@ -51,18 +65,18 @@
         <dex dex="/Users/kmiki/AndroidStudioProjects/gs3_sf/app/build/intermediates/pre-dexed/debug/classes-30f30aab2788c9906df6cd58beba060e5628c0a4.jar" />
     </item>
     <item
-        jar="/Users/kmiki/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.1/support-annotations-23.1.1.jar"
+        jar="/Users/kmiki/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp/2.3.0/2e7bc7033dc2c8423e661224171b3133fb155b28/okhttp-2.3.0.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
-        <dex dex="/Users/kmiki/AndroidStudioProjects/gs3_sf/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.1-65ad6a9f70dbd517c64025df816a48512a047f7f.jar" />
+        sha1="2e7bc7033dc2c8423e661224171b3133fb155b28">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs3_sf/app/build/intermediates/pre-dexed/debug/okhttp-2.3.0-170b1c94db380e0085abbb0d6fe6b366f0978bd3.jar" />
     </item>
     <item
-        jar="/Users/kmiki/AndroidStudioProjects/gs3_sf/app/build/intermediates/exploded-aar/gs3_sf.modules/volley/unspecified/jars/classes.jar"
+        jar="/Users/kmiki/AndroidStudioProjects/gs3_sf/app/build/intermediates/exploded-aar/com.example.library/android-cloud-sdk-v2.4.2/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="bf4cfacac6b9c3761b95c7bea91df26c316f9c79">
-        <dex dex="/Users/kmiki/AndroidStudioProjects/gs3_sf/app/build/intermediates/pre-dexed/debug/classes-09e2a02d4ed569a142da68c45ee4994f2b0f6101.jar" />
+        sha1="ec79986e7c3a43c498ceada61d49cccc14f5dec3">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs3_sf/app/build/intermediates/pre-dexed/debug/classes-bc4ef90ba591e9b5eee7c8eb5dc097f43be120f4.jar" />
     </item>
 
 </items>

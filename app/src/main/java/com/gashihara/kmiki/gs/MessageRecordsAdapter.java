@@ -7,8 +7,7 @@ import android.net.Uri;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
-import android.text.style.ClickableSpan;
-import android.util.Log;
+import android.text.style.URLSpan;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -19,7 +18,6 @@ import android.widget.TextView;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -52,23 +50,33 @@ public class MessageRecordsAdapter extends ArrayAdapter<MessageRecord> {
         textView.setOnTouchListener(new ViewGroup.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                //タップしたのはTextViewなのでキャスト（型の変換）する
+                //タップしたのはTextViewなのでキャストする
                 TextView textView = (TextView) v;
+                String message = textView.getText().toString();
+                // SpannableString の取得
+                SpannableString ss2 = new SpannableString(message);
 
-                // TextView に LinkMovementMethod を登録します
+                final Pattern STANDARD_URL_MATCH_PATTERN = Pattern.compile("(http://|https://){1}[\\w\\.\\-/:\\#\\?\\=\\&\\;\\%\\~\\+]+", Pattern.CASE_INSENSITIVE);
+                final Matcher m = STANDARD_URL_MATCH_PATTERN.matcher(message);
+                while(m.find()) {
+                    final String t = m.group();
+                    ss2.setSpan(new URLSpan(t) {
+                        @Override
+                        public void onClick(View textView) {
+
+                            Uri uri = Uri.parse(t);
+                            Intent intent = new Intent(textView.getContext(), WebActivity.class);
+                            intent.putExtra("url",uri.toString());
+                            textView.getContext().startActivity(intent);
+                        }
+                    }, m.start(), m.end(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+
+                }
+
+                textView.setText(ss2);
+                //SpannableString使うにはMovementMethod を登録しないといけないらしい
                 textView.setMovementMethod(LinkMovementMethod.getInstance());
 
-                //リンクをタップした時に処理するクラスを作成。SpannableStringを使う。
-                String message = textView.getText().toString();
-
-                LinkedList<String> ulist = new LinkedList<String>();
-                ulist.add("http://google.co.jp");
-                ulist.add("http://yahoo.co.jp");
-
-                // SpannableString の取得
-                SpannableString ss = createSpannableString(message, ulist);
-                // SpannableString をセットし、リンクを有効化する
-                textView.setText(ss);
                 return false;
             }
         });
@@ -86,42 +94,6 @@ public class MessageRecordsAdapter extends ArrayAdapter<MessageRecord> {
         return convertView;
     }
 
-
-    private SpannableString createSpannableString(String message, final LinkedList<String> ulist) {
-
-        SpannableString ss = new SpannableString(message);
-
-        for (int i = 0; i < ulist.size(); i++) {
-            int start = 0;
-            int end = 0;
-
-            // リンク化対象の文字列の start, end を算出する
-            Pattern pattern = Pattern.compile(ulist.get(i));
-            Matcher matcher = pattern.matcher(message);
-            while (matcher.find()) {
-                start = matcher.start();
-                end = matcher.end();
-                break;
-            }
-
-            // SpannableString にクリックイベント、パラメータをセットする
-            final int finalI = i;
-            ss.setSpan(new ClickableSpan() {
-                @Override
-                public void onClick(View textView) {
-                    String url = ulist.get(finalI);
-                    Uri uri = Uri.parse(url);
-                    Log.d("myurl2", uri.toString());//デバッグログを出力します。
-
-                    Intent intent = new Intent(textView.getContext(), WebActivity.class);
-                    intent.putExtra("url",uri.toString());
-                    textView.getContext().startActivity(intent);
-                }
-            }, start, end, Spanned.SPAN_INCLUSIVE_INCLUSIVE);
-        }
-
-        return ss;
-    }
 
 
 
