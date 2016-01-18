@@ -155,7 +155,7 @@ public class MainActivity extends ActionBarActivity {
             //facebook処理
             Session s = Session.getActiveSession();
             s.closeAndClearTokenInformation();
-            //KiiUser.logOut();
+            KiiUser.logOut();
 
             //ログイン画面に遷移
             // Intent のインスタンスを取得する。getApplicationContext()でViewの自分のアクティビティーのコンテキストを取得。遷移先のアクティビティーを.classで指定

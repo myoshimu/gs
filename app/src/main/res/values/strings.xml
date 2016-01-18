@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">gs</string>
+
     <!-- Userで追加ここから-->
     <string name="enter_username">Enter username (3-64 length)</string>
     <string name="enter_password">Enter password (4-50 length)</string>
