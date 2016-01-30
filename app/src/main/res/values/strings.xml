@@ -17,6 +17,10 @@
     <string name="post_button">Post</string>
     <string name="no_data_message">No Data</string>
     <!-- Postで追加ここまで-->
+    <!-- Goodで追加ここから-->
+    <string name="good">いいね</string>
+    <string name="good_done">いいねしました</string>
+    <!-- Goodで追加ここまで-->
 
     <string name="facebook_app_id">1544544715863992</string>
 

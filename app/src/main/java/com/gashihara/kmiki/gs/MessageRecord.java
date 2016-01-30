@@ -12,15 +12,19 @@ public class MessageRecord {
     private double lat;
     private double lon;
 
+    private int goodCount;
+
     //データを１つ作成する関数です。項目が増えたら増やしましょう。
     //MessageRecord=クラスメイト同じ名前の関数=newしたときに動くConstructor
-    public MessageRecord(String id, String imageUrl, String comment, Long created, Double lat,Double lon) {
+    public MessageRecord(String id, String imageUrl, String comment, Long created, Double lat,Double lon,int goodCount) {
         this.imageUrl = imageUrl;
         this.comment = comment;
         this.id = id;
         this.created = created;
         this.lat = lat;
         this.lon = lon;
+
+        this.goodCount = goodCount;
     }
     //それぞれの項目を返す関数です。項目が増えたら増やしましょう。
     public String getComment() {
@@ -38,4 +42,7 @@ public class MessageRecord {
     }
     public double getLat() {return lat;}
     public double getLon() {return lon;}
+    public int getGoodCount() {return goodCount;}
+    //セットする関数.項目が増えたら追加しましょう
+    public void setGoodCount(int goodCount){this.goodCount = goodCount;}
 }

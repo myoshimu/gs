@@ -97,6 +97,7 @@ public class MainActivity extends ActionBarActivity {
                             String title = obj.getString("comment", "");
                             String url = obj.getString("imageUrl", "");
 
+                            int goodCount = obj.getInt("goodCount", 0);//Goodで修正
                             //kmiki追加2016.1.23
                             Long created = obj.getCreatedTime();
                             GeoPoint objLoc1 = obj.getGeoPoint("location1",null);
@@ -109,7 +110,7 @@ public class MainActivity extends ActionBarActivity {
                             }
                             //kmiki追加ここまで
                             //MessageRecordを新しく作ります。
-                            MessageRecord record = new MessageRecord(id, url, title, created,lat,lon);
+                            MessageRecord record = new MessageRecord(id, url, title, created,lat,lon,goodCount);//Goodで修正
                             //MessageRecordの配列に追加します。
                             records.add(record);
                         }
