@@ -13,6 +13,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
@@ -26,9 +27,10 @@ import java.util.regex.Pattern;
 public class MessageRecordsAdapter extends ArrayAdapter<MessageRecord> {
     private ImageLoader mImageLoader;
 
+
     //アダプターを作成する関数。コンストラクター。クラス名と同じです。
     public MessageRecordsAdapter(Context context) {
-        //レイアウトのidmessage_itemのViewを親クラスに設定している
+        //message_itemのViewを親クラスに設定している
         super(context, R.layout.message_item);
         //キャッシュメモリを確保して画像を取得するクラスを作成。これを使って画像をダウンロードする。Volleyの機能
         mImageLoader = new ImageLoader(VolleyApplication.getInstance().getRequestQueue(), new BitmapLruCache());
@@ -44,7 +46,11 @@ public class MessageRecordsAdapter extends ArrayAdapter<MessageRecord> {
         //レイアウトにある画像と文字のViewを所得します。
         NetworkImageView imageView = (NetworkImageView) convertView.findViewById(R.id.image1);
         TextView textView = (TextView) convertView.findViewById(R.id.text1);
-        TextView textView2 = (TextView) convertView.findViewById(R.id.text2);
+        //kmiki追加,1.23
+        TextView created = (TextView) convertView.findViewById(R.id.created);
+        //TextView location = (TextView) convertView.findViewById(R.id.location);
+        ImageButton location = (ImageButton) convertView.findViewById(R.id.location);
+
 
         //webリンクを制御するプログラムはここから
         textView.setOnTouchListener(new ViewGroup.OnTouchListener() {
@@ -89,7 +95,23 @@ public class MessageRecordsAdapter extends ArrayAdapter<MessageRecord> {
         imageView.setImageUrl(imageRecord.getImageUrl(), mImageLoader);
         //Viewに文字をセットします。
         textView.setText(imageRecord.getComment());
-        textView2.setText(imageRecord.getPdate());
+        created.setText(imageRecord.getCreated());
+        String lat = String.valueOf(imageRecord.getLat());
+        String lon = String.valueOf(imageRecord.getLon());
+
+        if (lat != "0.0" || lon !="0.0"){
+            location.setVisibility(View.VISIBLE);
+            final String gcode = "geo:"+lat+","+lon;
+            location.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(gcode));
+//                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=Osaka"));
+                    v.getContext().startActivity(intent);
+                }
+            });
+        }
+
         //1つのセルのViewを返します。
         return convertView;
     }

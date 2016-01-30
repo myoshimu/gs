@@ -2,10 +2,13 @@
 package com.gashihara.kmiki.gs;
 
 import android.app.DialogFragment;
+import android.content.ContentResolver;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,6 +22,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.kii.cloud.storage.GeoPoint;
 import com.kii.cloud.storage.Kii;
 import com.kii.cloud.storage.KiiBucket;
 import com.kii.cloud.storage.KiiObject;
@@ -44,6 +48,11 @@ public class PostActivity extends ActionBarActivity {
     private String comment;
     //カメラで撮影した画像のuri
     private Uri mImageUri;
+
+    //kmiki 追加部分
+    private String pdate;
+    private LocationManager mLocationManager;
+    //kmiki ここまで
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +85,56 @@ public class PostActivity extends ActionBarActivity {
                 onPostButtonClicked(v);
             }
         });
+/*        ImageButton geoBtn = (ImageButton) findViewById(R.id.geobutton);
+        geoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBtnGpsClicked(v);
+            }
+        }); */
+
+        // GPS
+        mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        boolean gpsFlg = mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        Log.d("GPS Enabled", gpsFlg ? "OK" : "NG");
     }
+
+/*    public void onBtnGpsClicked(View view) {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        mLocationManager.requestLocationUpdates(
+                LocationManager.GPS_PROVIDER, //LocationManager.NETWORK_PROVIDER,
+                3000, // 通知のための最小時間間隔（ミリ秒）
+                10, // 通知のための最小距離間隔（メートル）
+                new LocationListener() {
+                    @Override
+                    public void onLocationChanged(Location location) {
+                        String msg = "Lat=" + location.getLatitude()
+                                + "\nLng=" + location.getLongitude();
+                        Log.d("GPS", msg);
+                        if (ActivityCompat.checkSelfPermission(PostActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(PostActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                             return;
+                        }
+                        mLocationManager.removeUpdates(this);
+                    }
+
+                    @Override
+                    public void onProviderDisabled(String provider) {
+                    }
+
+                    @Override
+                    public void onProviderEnabled(String provider) {
+                    }
+
+                    @Override
+                    public void onStatusChanged(String provider, int status, Bundle extras) {
+                    }
+                }
+        );
+    }*/
+
+
     //画像の添付ボタンをおした時の処理
     public void onAttachFileButtonClicked(View v) {
         //ギャラリーを開くインテントを作成して起動する。
@@ -88,6 +146,7 @@ public class PostActivity extends ActionBarActivity {
         //Activityを起動
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), IMAGE_CHOOSER_RESULTCODE);
     }
+
     //カメラの添付ボタンをおした時の処理
     public void onAttachCameraFileButtonClicked(View v) {
         //カメラは機種依存が大きく、いろいろサンプルを見たほうが良い
@@ -112,34 +171,44 @@ public class PostActivity extends ActionBarActivity {
         //インテント起動
         startActivityForResult(intent, IMAGE_CHOOSER_RESULTCODE);
     }
+
     //画像を選択した後に実行されるコールバック関数。インテントの実行された後にコールバックされる。自動的に実行されます。
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         //他のインテントの実行結果と区別するためstartActivityで指定した定数IMAGE_CHOOSER_RESULTCODEと一致するか確認
         if (requestCode == IMAGE_CHOOSER_RESULTCODE) {
             //失敗の時
-            if (resultCode != RESULT_OK ) {
+            if (resultCode != RESULT_OK) {
                 return;
             }
 
             //画像を取得する。Xperiaの場合はdataに画像が入っている。それ以外はintentで設定したmImageUriに入っている。
             Uri result;
-            if(data != null) {
+            if (data != null) {
                 result = data.getData();
-            }else {
+            } else {
                 result = mImageUri;
-                Log.d("mogi:mImageUri:",result.toString());
+                Log.d("result", result.toString());
             }
             //画面に画像を表示
             ImageView iv = (ImageView) findViewById(R.id.image_view1);
+
             iv.setImageURI(result);
-
-
-            //画像のパスを設定。Uploadでつかう。
             mImagePath = getFilePathByUri(result);
+
+            if (result!=null) {
+            //画像のパスを設定。Uploadでつかう。
+        //ファイルをUP、完了した時にpostMessagesを実行している。
+                Log.d("result2", result.toString());
+        //kmiki_01_25 画像から緯度軽度を取得
+
+
+
+            }
 
         }
     }
+
     //uriからファイルのパスを取得する。バージョンによって処理が違う。KiiCloudのチュートリアルから取り込んだ。汎用的に使えます。
     private String getFilePathByUri(Uri selectedFileUri) {
         //4.2以降の時
@@ -150,8 +219,35 @@ public class PostActivity extends ActionBarActivity {
             FileOutputStream fos = null;
             try {
                 //ビットマップを取得
+                ContentResolver contentResolver = getContentResolver();
                 Bitmap bmp = MediaStore.Images.Media.getBitmap(
-                        this.getContentResolver(), selectedFileUri);
+                        contentResolver, selectedFileUri);
+
+               /* Cursor cursor = getContentResolver().query(selectedFileUri, new String[]{MediaStore.Images.Media.DATA}, null, null, null);
+                if (cursor == null)
+                    return null;
+                try {
+                    if (!cursor.moveToFirst()){
+                        return null;
+                    }
+                    //これがファイルのパス
+                    String picturePath = cursor.getString(0);
+                    Log.d("pictpath",picturePath.toString());
+                } finally {
+                    cursor.close();
+                }
+                *//*try {
+                    // ExifInterfaceインスタンスを生成
+                    //ExifInterface exif = new ExifInterface(filePath);
+                    // TODO タグ情報を取得
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }*/
+
+
+
+
+
                 //一時保存するディレクトリ。アプリに応じてgsappの部分を変更したほうが良い
                 String cacheDir = Environment.getExternalStorageDirectory()
                         .getAbsolutePath() + File.separator + "gsapp";
@@ -183,7 +279,7 @@ public class PostActivity extends ActionBarActivity {
             return filePath;
         } else {
             //データから探す
-            String[] filePathColumn = { MediaStore.MediaColumns.DATA };
+            String[] filePathColumn = {MediaStore.MediaColumns.DATA};
             Cursor cursor = this.getContentResolver().query(
                     selectedFileUri, filePathColumn, null, null, null);
 
@@ -220,13 +316,14 @@ public class PostActivity extends ActionBarActivity {
         }
         //画像をUPしてからmessagesに投稿。
         if (mImagePath != null) {
-            //ファイルをUP、完了した時にpostMessagesを実行している。
+
             uploadFile(mImagePath);
-        }else {
+        } else {
             //画像がないときはcommentだけ登録
             postMessages(null);
         }
     }
+
     //投稿処理。画像のUploadがうまくいったときは、urlに公開のURLがセットされる
     public void postMessages(String url) {
         //バケット名を設定。バケット＝DBのテーブルみたいなもの。Excelのシートみたいなもの。
@@ -234,6 +331,16 @@ public class PostActivity extends ActionBarActivity {
         KiiObject object = bucket.object();
         //Json形式でKeyのcommentをセット.{"comment":"こめんとです","imageUrl":"http://xxx.com/xxxx"}
         object.set("comment", comment);
+
+
+//kmiki geo
+        //KiiObject object2 = KiiUser.getCurrentUser().bucket("locations").object();
+        GeoPoint point = new GeoPoint(35.658603, 139.745433);
+        object.set("location1", point);
+
+
+
+
         //画像があるときだけセット
         if(url != null) {
             object.set("imageUrl", url);

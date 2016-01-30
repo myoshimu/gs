@@ -34,7 +34,7 @@ import com.kii.cloud.storage.social.connector.KiiSocialNetworkConnector;
 public class UserActivity extends ActionBarActivity implements Session.StatusCallback {
     private EditText mUsernameField;
     private EditText mPasswordField;
-    private Button button;
+    private Button fb_button;
     private TextView textView;
     Session session = Session.getActiveSession();
 
@@ -84,7 +84,7 @@ public class UserActivity extends ActionBarActivity implements Session.StatusCal
             }
         }
 
-        updateView(session);
+      //  updateView(session);
 
     }
 
@@ -103,8 +103,8 @@ public class UserActivity extends ActionBarActivity implements Session.StatusCal
 
         Button signupBtn = (Button) findViewById(R.id.signup_button);
         Button loginBtn = (Button) findViewById(R.id.login_button);
-        button = (Button) findViewById(R.id.button);
-        textView = (TextView) findViewById(R.id.fb_text);
+        fb_button = (Button) findViewById(R.id.fb_button);
+        //textView = (TextView) findViewById(R.id.fb_text);
 
         //ログインボタンをクリックした時の処理を設定
         loginBtn.setOnClickListener(new View.OnClickListener() {
@@ -123,16 +123,13 @@ public class UserActivity extends ActionBarActivity implements Session.StatusCal
             }
         });
 
-
+     //   updateView(session);
     }
-
-
-
-
 
 
     //FaceBookログイン
     private void updateView(final Session session) {
+        setContentView(R.layout.activity_user);
         if (session.isOpened()) {
 
             // FB login succeeded. Login to Kii with obtained access token.
@@ -159,9 +156,8 @@ public class UserActivity extends ActionBarActivity implements Session.StatusCal
             });
 
         } else {
-            textView.setText("Login to FB");
-            button.setText("LOGIN WITH FACEBOOK");
-            button.setOnClickListener(new View.OnClickListener() {
+            Button fb_button = (Button) findViewById(R.id.fb_button);
+            fb_button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Session session = Session.getActiveSession();
@@ -284,17 +280,13 @@ public class UserActivity extends ActionBarActivity implements Session.StatusCal
 
 
 
-
-
-
+    @Override
+    public void call(Session session, SessionState sessionState, Exception e) {
+        //  updateView(session);
+    }
 
 
     //Facebook 認証を完了するためのメソッドを onActivityResult に追加。お決まりの処理
-    @Override
-    public void call(Session session, SessionState sessionState, Exception e) {
-        updateView(session);
-
-    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

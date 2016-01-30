@@ -74,7 +74,7 @@
 
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/fb_button"
             android:text="LOGIN WITH FACEBOOK"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -85,23 +85,14 @@
             android:layout_marginRight="20dp"/>
 
 
-        <TextView
+        <!--TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:id="@+id/fb_text"
-            android:text="aaa"/>
+            android:text="aaa"/-->
 
 
-        <!--com.facebook.widget.LoginButton
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="121dp"
-            android:layout_below="@+id/button"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" /-->
 
     </LinearLayout>
 </LinearLayout>
