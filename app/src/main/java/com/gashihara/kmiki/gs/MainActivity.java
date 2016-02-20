@@ -7,11 +7,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
 import com.facebook.Session;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.kii.cloud.storage.GeoPoint;
 import com.kii.cloud.storage.Kii;
 import com.kii.cloud.storage.KiiObject;
@@ -126,6 +129,14 @@ public class MainActivity extends ActionBarActivity {
         super.onStart();
         //一覧のデータを作成して表示します。
         fetch();
+
+        //GrowthHackで追加ここから
+        //GAのスクリーン名はアクティビティーの名前を送信します。
+        Tracker t = ((VolleyApplication)getApplication()).getTracker(VolleyApplication.TrackerName.APP_TRACKER);
+        t.setScreenName(this.getClass().getSimpleName());
+        t.send(new HitBuilders.AppViewBuilder().build());
+        Log.d("mikiga","mikiga");
+        //GrowthHackで追加ここまで
     }
     //ListView2で追加ここまで
 

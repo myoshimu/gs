@@ -10,6 +10,13 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+//kmiki Dexエラー対策で追加
+        multiDexEnabled true
+    }
+
+    dexOptions {
+        //最大ヒープサイズを4Gに設定
+        javaMaxHeapSize "4g"
     }
     buildTypes {
         release {
@@ -34,5 +41,6 @@ dependencies {
     compile 'com.squareup.okhttp:okhttp:2.3.0'
     compile 'com.squareup.okhttp:okhttp-apache:2.3.0'
     compile 'com.facebook.android:facebook-android-sdk:3.20.0'
-    compile 'com.android.support:design:23.0.1'
+    compile 'com.android.support:design:23.1.1'
+    compile 'com.google.android.gms:play-services:8.4.0'
 }

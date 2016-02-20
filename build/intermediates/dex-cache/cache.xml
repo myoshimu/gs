@@ -2,46 +2,25 @@
 <items version="2" >
 
     <item
-        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.android.support/design/23.0.1/jars/classes.jar"
+        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="e5c61a3169221a89654ffcaaed47bba51cf071ad">
-        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-1b415234183c9055550c6b95c6941ac9938b778d.jar" />
+        sha1="379471b2bd17d9737c050345c08e8c7d16589784">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-fad7108ad22ceab549e42823aae282a3dfc03cdd.jar" />
     </item>
     <item
-        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/gs.modules/volley/unspecified/jars/classes.jar"
+        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/8.4.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="95f9f7a1d4ce9904aba94b4ad51d697a203a4ce3">
-        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-d6a6a53baae60be8ad08cf27e4124dd650b43835.jar" />
+        sha1="1a78298e7724d5440d210bcb946b3493250d354d">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-a4500e8cb29690571f03d8b077848f15591e1ef8.jar" />
     </item>
     <item
-        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/libs/internal_impl-23.1.1.jar"
+        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-vision/8.4.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
-        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.1-2a459057c08fca3f5aaf3cde51369c6d7cbec070.jar" />
-    </item>
-    <item
-        jar="/Users/kmiki/AndroidStudioProjects/gs のコピー/app/build/intermediates/exploded-aar/gs のコピー.modules/volley/unspecified/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="18cb81482a064496a2dea4c3a68b797558084582">
-        <dex dex="/Users/kmiki/AndroidStudioProjects/gs のコピー/app/build/intermediates/pre-dexed/debug/classes-1907158f4b6c3d8d67e62211a747ad4137b35300.jar" />
-    </item>
-    <item
-        jar="/Users/kmiki/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp-apache/2.3.0/f7e3311a6a82377e270bf327fed8dd5c95dd439/okhttp-apache-2.3.0.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="0f7e3311a6a82377e270bf327fed8dd5c95dd439">
-        <dex dex="/Users/kmiki/AndroidStudioProjects/gs のコピー/app/build/intermediates/pre-dexed/debug/okhttp-apache-2.3.0-a121ddd5ce941776028f85c3c8e286ae3b83e7a0.jar" />
-    </item>
-    <item
-        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.example.library/android-cloud-sdk-v2.4.2/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="ec79986e7c3a43c498ceada61d49cccc14f5dec3">
-        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-648eb8031e6601663371f003a96dd4381aa5d8f0.jar" />
+        sha1="dfecc4d835cdabcdecf7e95f0d20a3ef1e9d8ef4">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-3c67c355433cc8000a9144456d99ac8a4fc8c1b5.jar" />
     </item>
     <item
         jar="/Users/kmiki/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp/2.3.0/2e7bc7033dc2c8423e661224171b3133fb155b28/okhttp-2.3.0.jar"
@@ -51,67 +30,39 @@
         <dex dex="/Users/kmiki/AndroidStudioProjects/gs のコピー/app/build/intermediates/pre-dexed/debug/okhttp-2.3.0-170b1c94db380e0085abbb0d6fe6b366f0978bd3.jar" />
     </item>
     <item
-        jar="/Users/kmiki/AndroidStudioProjects/gs のコピー/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/jars/classes.jar"
+        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/8.4.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
-        <dex dex="/Users/kmiki/AndroidStudioProjects/gs のコピー/app/build/intermediates/pre-dexed/debug/classes-18c0e68d0a916693daa3cedb6762538dba49e7fb.jar" />
+        sha1="3a364cc6b698d1b3b2d284f64618daaa7fe77ddf">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-c121275028af4067e9175758ce5b95783f68f02e.jar" />
     </item>
     <item
-        jar="/Users/kmiki/AndroidStudioProjects/gs のコピー/app/build/intermediates/exploded-aar/com.android.support/design/23.0.1/jars/classes.jar"
+        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="e5c61a3169221a89654ffcaaed47bba51cf071ad">
-        <dex dex="/Users/kmiki/AndroidStudioProjects/gs のコピー/app/build/intermediates/pre-dexed/debug/classes-828828c26a716e06f3ead08c25dfe84d88aab01a.jar" />
+        sha1="fef2b3e4b6b1b0e5fe7b69fa137a5fa55a3182ab">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-305bb6f5ef0462d7513ff5c0b09d4ed6f6ae85cc.jar" />
     </item>
     <item
-        jar="/Users/kmiki/AndroidStudioProjects/gs のコピー/app/build/intermediates/exploded-aar/com.example.library/android-cloud-sdk-v2.4.2/jars/classes.jar"
+        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/8.4.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="ec79986e7c3a43c498ceada61d49cccc14f5dec3">
-        <dex dex="/Users/kmiki/AndroidStudioProjects/gs のコピー/app/build/intermediates/pre-dexed/debug/classes-0e146b2bedb620458bd121b5b5da5095289a76e0.jar" />
+        sha1="b82b8e847173c28efffcd291b2a0b1ae9ad17fa4">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-441fc4b6ab2a46f184c049743bc13c575876434d.jar" />
     </item>
     <item
-        jar="/Users/kmiki/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.1/support-annotations-23.1.1.jar"
+        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/8.4.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
-        <dex dex="/Users/kmiki/AndroidStudioProjects/gs のコピー/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.1-65ad6a9f70dbd517c64025df816a48512a047f7f.jar" />
+        sha1="b36f30ac5ee5d5214f4b1e2ac49f11889d58e71a">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-f0a9e04ebda5449a51d9076a17b447c6fd593c48.jar" />
     </item>
     <item
-        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/jars/classes.jar"
+        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/gs.modules/volley/unspecified/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
-        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-9c81a2ac086a78e71a842a40a8fdeb1d832f9f1e.jar" />
-    </item>
-    <item
-        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.20.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="66236ebe4d86dafbfc30b4fd7e5917ba2a645b35">
-        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-131157dd83c381486abe8b69537a9664ef213328.jar" />
-    </item>
-    <item
-        jar="/Users/kmiki/AndroidStudioProjects/gs のコピー/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.20.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="66236ebe4d86dafbfc30b4fd7e5917ba2a645b35">
-        <dex dex="/Users/kmiki/AndroidStudioProjects/gs のコピー/app/build/intermediates/pre-dexed/debug/classes-227127bff70a0044a302aa70fdc60ad2d6dd7f0a.jar" />
-    </item>
-    <item
-        jar="/Users/kmiki/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.3.0/1b355f73402020c5a0dcca58affc3ec3dfeabac1/okio-1.3.0.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="1b355f73402020c5a0dcca58affc3ec3dfeabac1">
-        <dex dex="/Users/kmiki/AndroidStudioProjects/gs のコピー/app/build/intermediates/pre-dexed/debug/okio-1.3.0-76e80f3e3ecd8d9085a0c34501d276589f35002a.jar" />
-    </item>
-    <item
-        jar="/Users/kmiki/AndroidStudioProjects/gs のコピー/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/libs/internal_impl-23.1.1.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
-        <dex dex="/Users/kmiki/AndroidStudioProjects/gs のコピー/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.1-97106a09c20404fb44b3bb57c66bb29a3fdd001d.jar" />
+        sha1="95f9f7a1d4ce9904aba94b4ad51d697a203a4ce3">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-d6a6a53baae60be8ad08cf27e4124dd650b43835.jar" />
     </item>
     <item
         jar="/Users/kmiki/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.1.2/91c20388c9a45f62b5ed8fe0502bb76ff6251fc7/bolts-android-1.1.2.jar"
@@ -121,6 +72,34 @@
         <dex dex="/Users/kmiki/AndroidStudioProjects/gs のコピー/app/build/intermediates/pre-dexed/debug/bolts-android-1.1.2-089a91239818575e7bef89b246a2fb60240aca78.jar" />
     </item>
     <item
+        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="65d086ee9daaf87b5af62ad24471edafa433354c">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-2bba5b5b1d0b430d59c662f369b7680e7f5b71fb.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="d358b3dd49a7c67844622dcbc9cf4339e13952ce">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-6ba9bd1ea3a7be3c5d80d85049279b63fc9257b1.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/jars/libs/internal_impl-23.0.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="03d38bb042efe3e5ce27ba66b729a9523c36d8fe">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.0-a3332fe81ac52eeb20be83d31792635a9df6a9a1.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="04de44f90606c77f3b28cf44861f306290505aac">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-80b4a4ec9be6fadf53e35c9e9c90c42e4a4aadd0.jar" />
+    </item>
+    <item
         jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
@@ -128,11 +107,165 @@
         <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-1291197ea79f1d66d87e23c157389c6f7f49f720.jar" />
     </item>
     <item
-        jar="/Users/kmiki/AndroidStudioProjects/gs のコピー/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/classes.jar"
+        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/libs/internal_impl-23.1.1.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
-        <dex dex="/Users/kmiki/AndroidStudioProjects/gs のコピー/app/build/intermediates/pre-dexed/debug/classes-cbd19e4bc7f581b6782df1b6dd06bf66b6d7c80a.jar" />
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.1-2a459057c08fca3f5aaf3cde51369c6d7cbec070.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="f2df436a8f02ce7e4d7d209671fc45f97c470f0e">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-a56943af1e29df65ba8f96008a876babf386ff06.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-safetynet/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="0194a7409c40de94fb539d4ad9928ec5d47afeb7">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-73021aec71269739adfec7a4d76a65925b18b929.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.20.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="66236ebe4d86dafbfc30b4fd7e5917ba2a645b35">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-131157dd83c381486abe8b69537a9664ef213328.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="9fe026fb4c7fce21bc5142f6e1bdf844f28061ac">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-82187e0d9b9b6b5baba6d513e6f28e398a37c45c.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="551e78f21acf69ebfb489c0e79647824c838013e">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-3f343d9a7d7fd145da028ea559d55ff0210e1cb6.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.1/support-annotations-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs のコピー/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.1-65ad6a9f70dbd517c64025df816a48512a047f7f.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="9cad249cf62751a323d9af568caf12284b7d6062">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-cf5ef8f7080931eb8e3f1734f07ab977008bd18e.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="b5e7892fb0708e792e0e933c4c0a0ca0ac7831fb">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-c413df38015dca925faf1c99e2bf994cfadc1281.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.3.0/1b355f73402020c5a0dcca58affc3ec3dfeabac1/okio-1.3.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="1b355f73402020c5a0dcca58affc3ec3dfeabac1">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs のコピー/app/build/intermediates/pre-dexed/debug/okio-1.3.0-76e80f3e3ecd8d9085a0c34501d276589f35002a.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8e673cdfadd8f2d98fdb2fda2285c30f6e449782">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-aeaf333694aad56632b6f792751c26d67827fcc6.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="1c9f35e952b212c843f7bd2c7eec8e82ad95602e">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-aab3d76431bd9bb826c9df5a3f2ee7fe393dbc3e.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-auth/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="966e5771a5a2ebfb31bf00d7cd6cd2546d245517">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-d50da3f02c1cbc33330a3e6f1f0d0a3fcf1ceaad.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="e167a34eaca0b31704212f43f9576ea84e05046f">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-091378a60b53edd04c19a97f47b0c122dbedac7c.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="c54246475c1bb64ac6857d1320364bfbfeda2c46">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-9d609532185748c584762f5e53ba148fb19d74fa.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a8412b654dab86d57bf90683367488211c8a81f1">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-b492dfdd62938108c022cab8bc3888f64b4b1e5b.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="09c5e804bc67fc0580360043dff067df574a60d4">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-40f6b0726685bb0197e40a396b00d9786c974958.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-panorama/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="08d34b2d135c1cc96ab506fd8bf6916d1e2f391a">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-712424dacbd810aef02145796d3faf8900ea5cc9.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp-apache/2.3.0/f7e3311a6a82377e270bf327fed8dd5c95dd439/okhttp-apache-2.3.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="0f7e3311a6a82377e270bf327fed8dd5c95dd439">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs のコピー/app/build/intermediates/pre-dexed/debug/okhttp-apache-2.3.0-a121ddd5ce941776028f85c3c8e286ae3b83e7a0.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="613298b7aa012f121ce542881c0a599ebd8078f2">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-1009ee6ae3d6f1ce41c51a8204f2c46b82f03482.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.example.library/android-cloud-sdk-v2.4.2/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ec79986e7c3a43c498ceada61d49cccc14f5dec3">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-648eb8031e6601663371f003a96dd4381aa5d8f0.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-9c81a2ac086a78e71a842a40a8fdeb1d832f9f1e.jar" />
+    </item>
+    <item
+        jar="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="2d7fe76982677315c4dc4edfb459c8ca718a9d4c">
+        <dex dex="/Users/kmiki/AndroidStudioProjects/gs/app/build/intermediates/pre-dexed/debug/classes-cd48a8325cc1c7d367cf6f4cd7a0be9e58ecaadc.jar" />
     </item>
 
 </items>
